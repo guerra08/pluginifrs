@@ -140,8 +140,8 @@ $baseurl =  $CFG->wwwroot.'/report/sistec/page_confirmar.php?id='.$course->id.'&
 //if (!empty($roleid)) {
     $table = new flexible_table('course-sistec-'.$course->id.'-'.$cm->id.'-'.$roleid);
     $table->course = $course;
-    $table->define_columns(array('id','fullname','select', 'count'));
-    $table->define_headers(array('ID',get_string('user'),'E-mail','Cursos Concluídos'));
+    $table->define_columns(array('id','fullname','select', 'count', 'string'));
+    $table->define_headers(array('Turma',get_string('user'),'CPF','Dif', 'Caso'));
     $table->define_baseurl($baseurl);
     $table->set_attribute('cellpadding','5');
     $table->set_attribute('class', 'generaltable generalbox reporttable');
@@ -159,7 +159,7 @@ $baseurl =  $CFG->wwwroot.'/report/sistec/page_confirmar.php?id='.$course->id.'&
     echo '<div id="sistecreport">' . "\n";
     
     $sql = "   
-        SELECT t.turma, u.firstname, u.lastname, uf.data cpf, cast(to_char(now()-to_timestamp(u.lastaccess), 'DD')as integer) dif, 
+        SELECT uf.data cpf, u.firstname, u.lastname, t.turma, cast(to_char(now()-to_timestamp(u.lastaccess), 'DD')as integer) dif, 
 
         (CASE WHEN (cc.timecompleted IS NULL OR cc.timecompleted = 0) THEN 
 
@@ -183,11 +183,13 @@ $baseurl =  $CFG->wwwroot.'/report/sistec/page_confirmar.php?id='.$course->id.'&
     if (!$users = $DB->get_records_sql($sql)) {
         $users = array(); // tablelib will handle saying 'Nothing to display' for us.
     }
-    echo "<pre>";
-    print_r($users);
-    echo "</pre>";
-    echo '<h3>Usuários com maior quantidade de conclusões de curso: </h3>'."\n";
 
+    foreach($users as $user){
+        $data = array($user->turma, $user->firstname.' '.$user->lastname, $user->cpf, $user->dif, $user->case);
+        $table->add_data($data);
+    }
+
+    $table->print_html();
     $table->print_html();
 
     $PAGE->requires->js_init_call('M.report_sistec.init');

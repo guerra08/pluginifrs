@@ -203,7 +203,7 @@ if (!empty($roleid)) {
 
 	}
 
-  	//If only one course will be searche, this query is used.
+  	//If only one course will be searched, this query is used.
 
   else {
 		$sql = "SELECT cc.userid, u.firstname, u.lastname, cc.timecompleted
@@ -240,7 +240,7 @@ if (!empty($roleid)) {
         foreach ($users as $arrayUser) { // For each user that is retrieved, an array of users of each course is created.
            $sortedUsers[$arrayUser->shortname][] = $arrayUser;
         }
-        ksort($sortedUsers); // Sorting array by Key, or in this case, course.
+        ksort($sortedUsers); // Sorting array by Key, in this case, course.
         foreach ($sortedUsers as $users) { // For each course that is read, it's values are added to the table.
           $data = array('<b>'.$users[0]->shortname.'</b>' ,'<b>'.$users[0]->course.'</b>','-'); // Course shotname and name are stored in data, which will be used in the table
           $table->add_data($data); // Added data to table
@@ -259,8 +259,9 @@ if (!empty($roleid)) {
         		$cpf = str_replace(" ", "", $cpf); // Removes any special character (this is needed because the data has to be only numbers)
             $enrollmentDate = (isset($_GET["dia"]) && $_GET["dia"] == 1) ? date('d/m/Y H:i:s', $user->timecompleted): ""; // If the user opted to display the date when the student enrolled in the course, it will be stored in $enrollmentDate
             $data = array($cpf, $user->firstname.' '.$user->lastname, $enrollmentDate); // Data is stored (name, *entrollment date)
-        		$cpfs.=$cpf.'; '; // Each user's CPF is stored in this string, separated by ;
-            if(isset($validateCPF)&& $validateCPF == 1){
+        	$cpfs.=$cpf.'; '; // Each user's CPF is stored in this string, separated by ';'
+        	$courseCpfs.= $cpf.'; ';
+            if(isset($validateCPF) && $validateCPF == 1){
               if($cpf == ''){
                 $countUsers--;
               }else{
@@ -270,7 +271,10 @@ if (!empty($roleid)) {
             else{
               $table->add_data($data);
             }
+            $cpfData = array($courseCpfs);
           }
+              $table->add_data($cpfData);
+              unset($courseCpfs);
         }
       } elseif($searchAllCourses !== 1 || !isset($searchAllCourses)) {
     $cursoid = 0;

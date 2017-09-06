@@ -244,6 +244,7 @@ if (!empty($roleid)) {
             $inscricao = (isset($_GET["dia"]) && $_GET["dia"] == 1) ? date('d/m/Y H:i:s', $user->timecompleted): "";
             $data = array ($cpf, $user->firstname.' '.$user->lastname, $inscricao);
         		$cpfs.=$cpf.'; ';
+            $courseCpfs.= $cpf.'; ';
             if(isset($validateCPF)&& $validateCPF == 1){
               if($cpf == ''){
                 $countUsers--;
@@ -254,7 +255,10 @@ if (!empty($roleid)) {
             else{
               $table->add_data($data);
             }
+            $cpfData = array($courseCpfs);
           }
+            $table->add_data($cpfData);
+            unset($courseCpfs);
         }
       } elseif($searchAllCourses !== 1 || !isset($searchAllCourses)) {
     $cursoid = 0;
