@@ -4,43 +4,86 @@ label {
 	color: #C21C22;
 	font-weight: bold;
 }
-.plugin_select_text h1{
-	text-align: center;
-}
 .plugin_select_sistec{
+	border-radius: 15px;
+    border: 1.5px solid green;
 	width: 200px;
 	height: 200px;
 	position:relative;
-	float:left;
 	cursor: pointer;
+	display: inline-block;
+ 	float: left;
 }
 .plugin_select_evadidos{
+	border-radius: 15px;
+    border: 1.5px solid green;
 	width: 200px;
 	height: 200px;
 	position:relative;
-	float:left;
 	cursor: pointer;
+	display: inline-block;
+ 	float: left;
 }
 .plugin_select_cursosvazios{
+	border-radius: 15px;
+    border: 1.5px solid green;
 	width: 200px;
 	height: 200px;
 	position:relative;
-	float:left;
 	cursor: pointer;
+	display: inline-block;
+ 	float: left;
 }
 .plugin_select_servidores{
+	border-radius: 15px;
+    border: 1.5px solid green;
 	width: 200px;
 	height: 200px;
 	position:relative;
-	float:left;
 	cursor: pointer;
+	display: inline-block;
+ 	float: left;
 }
 .plugin_select_confirmar{
+	border-radius: 15px;
+    border: 1.5px solid green;
 	width: 200px;
 	height: 200px;
 	position:relative;
-	float:left;
 	cursor: pointer;
+	display: inline-block;
+ 	float: left;
+}
+.plugin_select_professoread{
+	border-radius: 15px;
+    border: 1.5px solid green;
+	width: 200px;
+	height: 200px;
+	position:relative;
+	cursor: pointer;
+	display: inline-block;
+ 	float: left;
+}
+.plugin_select_buscaporcpf{
+	border-radius: 15px;
+    border: 1.5px solid green;
+	width: 200px;
+	height: 200px;
+	position:relative;
+	cursor: pointer;
+	display: inline-block;
+ 	float: left;
+}
+
+.plugin_select_maiorconclusao{
+	border-radius: 15px;
+    border: 1.5px solid green;
+	width: 200px;
+	height: 200px;
+	position:relative;
+	cursor: pointer;
+	display: inline-block;
+ 	float: left;
 }
 h4.nomefuncao{
 	text-align: center;
@@ -74,4 +117,70 @@ h4.nomefuncao{
     margin : auto;
     width: 150px;
     height: auto;
-}			
+}		
+.plugin_select_maiorconclusao img {
+	display : block;
+    margin : auto;
+    width: 150px;
+    height: auto;
+}		
+.plugin_select_professoread img {
+	display : block;
+    margin : auto;
+    width: 150px;
+    height: auto;
+}
+.plugin_select_buscaporcpf img {
+	display : block;
+    margin : auto;
+    width: 150px;
+    height: auto;
+}
+.pluginifrs_menu{
+	clear: both;
+	list-style:none; 
+	border:1px solid #c0c0c0; 
+	float:right; 
+}
+.pluginifrs_menu li{
+	position:relative; 
+	float:left; 
+	border-right:1px solid #c0c0c0; 
+}
+.pluginifrs_menu li a{
+	color:#333; 
+	text-decoration:none; 
+	padding:5px 10px; 
+	display:block;
+}
+
+.pluginifrs_menu li a:hover{
+	background:#333; 
+	color:#fff; 
+	-moz-box-shadow:0 3px 10px 0 #CCC; 
+	-webkit-box-shadow:0 3px 10px 0 #ccc; 
+	text-shadow:0px 0px 5px #fff; 
+}
+.pluginifrs_menu li  ul{
+position:absolute; 
+top:25px; 
+left:0;
+background-color:#fff; 
+display:none;
+}
+.pluginifrs_menu li:hover ul, .pluginifrs_menu li.over ul{display:block;}
+.pluginifrs_menu li ul li{
+border:1px solid #c0c0c0; 
+display:block; 
+width:150px;
+}
+#form_pagesistec{
+	position: relative;
+	top: 10px;
+	float: left;
+}
+#sistecreport{
+	display: block;
+	float: left;
+	clear: both;
+}
